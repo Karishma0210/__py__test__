@@ -11,7 +11,7 @@ def automated_test():
     retcode = pytest.main()
     print("automated test successfully completed!")
 
-def client_ui_test():
+def client_ui_interaction():
     print("\n\n")
     switcher = {
         1: create_user_handler,
@@ -55,7 +55,7 @@ def main():
     
     switcher = {
         1: automated_test,
-        2: client_ui_test,
+        2: client_ui_interaction,
         0: quit_handler 
     }
     selected_func = None

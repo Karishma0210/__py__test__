@@ -32,7 +32,7 @@ def create_user_handler():
         is_valid_email = re.fullmatch(email_regex, email)
     
     user = User(name, surname, age, email)
-    user.create_user()
+    _ = user.create_user()
     save_user_handler(user)
     
 def save_user_handler(user):
@@ -58,7 +58,7 @@ def discard():
   
 def get_users_handler():
     print("Below is the table for all the users:\n\n")
-    User.get_users()
+    _ = User.get_users()
     user_input = input("\nYou want any specific filters in this? (y/n)").lower()
     if user_input.startswith('y'):
         filter_query = {}
@@ -72,7 +72,7 @@ def get_users_handler():
         except ValueError:
             print("age filter will not be considered")
         
-        User.get_users(filter_query=filter_query)
+        _ = User.get_users(filter_query=filter_query)
     
 def update_user_handler():
     user_id = None
@@ -96,7 +96,7 @@ def update_user_handler():
         update_options["age"] = int(input("age: "))
     except ValueError:
             print("age will not be updated")
-    User.update_user(user_id, update_options=update_options)
+    _ = User.update_user(user_id, update_options=update_options)
     
     
     
@@ -105,5 +105,5 @@ def delete_user_handler():
     while not user_id:
         user_id = input("Please enter the user id for deleting a record (format: 'VIA0001'): ")
     
-    User.delete_user(user_id)
+    _ = User.delete_user(user_id)
     
