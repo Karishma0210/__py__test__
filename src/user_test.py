@@ -40,3 +40,15 @@ class TestCreateUser:
         #you receive None for invalid user
         assert output == None
 
+class TestReadUser:
+    def test_read_users_without_filters(self):
+        users = User.get_users(pretty_print=False)
+        assert type(users) == list
+        if len(users)>1:
+            assert type(users[0]) == User
+
+class TestUpdateUser:
+    pass
+
+class TestDeleteUser:
+    pass

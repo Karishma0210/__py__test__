@@ -64,6 +64,12 @@ class User:
 
     @staticmethod
     def get_users(filter_query=None, filename="storage/users-data.json", pretty_print=True):  # add query
+        '''
+        filter_query: A dictionary with keys as parameters and values as exact required value
+            please note: due to limited time, I have not implemented filters with "AND" logic,
+            but this will consider first exact match and return the results.
+            pretty_print: will determine whether to show messages with user table or just return array of User objects
+        '''
         users = None
         try:
             with open(filename, 'r') as file:
