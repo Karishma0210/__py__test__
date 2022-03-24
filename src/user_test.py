@@ -59,7 +59,21 @@ class TestUpdateUser:
 
 
 class TestDeleteUser:
-    pass
+    def test_delete_user_valid_id(self):
+        user = create_dummy_user()
+        user = user.save(pretty_print=False)
+        assert user
+        
+        user_deleted = User.delete_user(user_id=user.user_id, pretty_print=False)
+        assert user_deleted
+
+    def test_delete_user_invalid_id(self):
+        random_id = lambda: ''.join(
+            random.choices(string.ascii_letters + string.digits, k=7))
+
+        user_deleted = User.delete_user(
+            user_id=random_id, pretty_print=False)
+        assert not user_deleted
 
 def create_dummy_user(generate_invalid_email=False, generate_invalid_age=False):
     random_letters = lambda: ''.join(random.choices(string.ascii_letters + string.digits, k=4))

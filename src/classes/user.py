@@ -164,10 +164,14 @@ class User:
                 User.save_users(users)
                 break
         else:
-            print("user with user id - {} not found\n".format(user_id))
-
-        print("\nUser with id {} is successfully deleted".format(user_id))
-        return User.get_users(pretty_print=pretty_print)
+            if pretty_print:
+                print("user with user id - {} not found\n".format(user_id))
+            else:
+                return False
+        if pretty_print:
+            print("\nUser with id {} is successfully deleted".format(user_id))
+        else:
+            return User.get_users(pretty_print=pretty_print)
 
     @staticmethod
     def from_json(user_json):
